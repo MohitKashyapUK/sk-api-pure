@@ -15,9 +15,13 @@ const server = http.createServer((req, res) => { // Server create karna
             const $ = cheerio.load(data);
             const table = $('#mix-chart > table tr');
             const names = table.eq(1).find('th'); // list of name elements, length 4
-            const old_results = table.eq(table.length - 4).find('.number');
-            const new_results = table.eq(table.length - 3).find('.number');
-            const obj = {};
+            const old_el_children = table.eq(table.length - 4).children(); // second last element
+            const new_el_children = table.eq(table.length - 3).children(); // last element of the list
+            const old_date = old_el_children.first().attr('title');
+            const new_date = new_el_children.first().attr('title');
+            const old_results = old_el_children.not(':first-child');
+            const new_results = new_el_children.not(':first-child');
+            const obj = { date: { old: old_date, new: new_date } };
             for (let i=0; i<4; i++) obj[names.eq(i).html().trim()] = { old: old_results.eq(i).html().trim(), new: new_results.eq(i).html().trim() };
 
             // Response body mein message bhejana
