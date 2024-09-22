@@ -65,7 +65,7 @@ const server = http.createServer((req, res) => { // Server create karna
     }).catch((err) => {
         // Error handling
         res.writeHead(500, {'Content-Type': 'text/plain'});
-        res.end('Error while fetching data from API\n');
+        res.end('Error while fetching data from API\n' + String(err));
         console.error(err);
     });
 });
