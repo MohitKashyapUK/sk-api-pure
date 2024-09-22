@@ -18,6 +18,12 @@ const server = http.createServer((req, res) => { // Server create karna
         const obj = { date: { old: old_date, new: new_date } };
         
         for (let i=0; i<4; i++) obj[names.eq(i).html().trim()] = { old: old_results.eq(i).html().trim(), new: new_results.eq(i).html().trim() };
+
+        if (!req.headers['user-agent'].includes('Mozilla')) {
+            res.writeHead(200, {'Content-Type': 'application/json'});
+            res.end(JSON.stringify(obj));
+            return;
+        }
         
         let text = '<!doctypehtml><html lang=en><meta charset=UTF-8><meta content="width=device-width,initial-scale=1"name=viewport><title>SK results</title><style>tr{border-bottom:1px solid #ddd}table{width:70vw}th{text-align:left}</style><body>';
         let header = "<tr>";
