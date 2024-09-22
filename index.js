@@ -20,54 +20,20 @@ const server = http.createServer((req, res) => { // Server create karna
         for (let i=0; i<4; i++) obj[names.eq(i).html().trim()] = { old: old_results.eq(i).html().trim(), new: new_results.eq(i).html().trim() };
         
         let text = '<!doctypehtml><html lang=en><meta charset=UTF-8><meta content="width=device-width,initial-scale=1"name=viewport><title>SK results</title><style>tr{border-bottom:1px solid #ddd}table{width:70vw}th{text-align:left}</style><body>';
-        /*`
-            <table>
-                <tr>
-                    <th>Date</th>
-                    <th>Disawer</th>
-                    <th>Faridabad</th>
-                    <th>Gaziabad</th>
-                    <th>Gali</th>
-                </tr>
-                <tr>
-                    <td>September 21, 2024</td>
-                    <td>42</td>
-                    <td>88</td>
-                    <td>39</td>
-                    <td>49</td>
-                </tr>
-                <tr>
-                    <td>September 22, 2024</td>
-                    <td>19</td>
-                    <td>XX</td>
-                    <td>XX</td>
-                    <td>XX</td>
-                </tr>
-            </table>
-
-        </body>
-        </html>`;
-        */
         let header = "<tr>";
-        let neww = header, old = header;
+        let neww = header;
+        let old = header;
         const keys = Object.keys(obj);
 
         keys.forEach(key => {
             header += `<th>${key}</th>`;
-            old += `<td>${obj[key]['old']}</td>`
-            neww += `<td>${obj[key]['new']}</td>`
+            old += `<td>${obj[key]['old']}</td>`;
+            neww += `<td>${obj[key]['new']}</td>`;
         });
 
-        // for (let i=0; i<2; i++) {
-            
-        // }
-
-        // keys.forEach(key => {
-        //     old += `<td>${obj[key]['old']}</td>`;
-        //     neww += `<td>${obj[key]['new']}</td>`;
-        // });
-
-        header += neww += old += "</tr>";
+        header += "</tr>";
+        neww += "</tr>";
+        old += "</tr>";
         text += `<table>${header+old+neww}</table></body></html>`;
 
         res.writeHead(200, {'Content-Type': 'text/html'}); // Response header
