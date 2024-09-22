@@ -53,7 +53,7 @@ const server = http.createServer((req, res) => { // Server create karna
 
         for (let key in obj) {
             header += `<th>${key}</th>`;
-            news += `<td>${obj[key]['new']}</td>`
+            neww += `<td>${obj[key]['new']}</td>`
             old += `<td>${obj[key]['old']}</td>`
         }
 
