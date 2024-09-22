@@ -25,7 +25,7 @@ const server = http.createServer((req, res) => { // Server create karna
             return;
         }
         
-        let text = '<!doctypehtml><html lang=en><meta charset=UTF-8><meta content="width=device-width,initial-scale=1"name=viewport><title>SK results</title><style>tr{border-bottom:1px solid #ddd}table{width:70vw}th{text-align:left}</style><body>';
+        let text = '<!doctypehtml><html lang=en><meta charset=UTF-8><meta content="width=device-width,initial-scale=1"name=viewport><title>SK results</title><style>tr{border-bottom:1px solid #ddd}table{width:95vw}th{text-align:left}</style><body>';
         let header = "<tr>";
         let neww = header;
         let old = header;
