@@ -49,20 +49,26 @@ const server = http.createServer((req, res) => { // Server create karna
         </html>`;
         */
         let header = "<tr>";
-        // let neww = header, old = header;
+        let neww = header, old = header;
+        const keys = Object.keys(obj);
 
-        for (let key in obj) {
+        keys.forEach(key => {
             header += `<th>${key}</th>`;
-            // old += `<td>${obj[key]['old']}</td>`
-            // neww += `<td>${obj[key]['new']}</td>`
-        }
+            old += `<td>${obj[key]['old']}</td>`
+            neww += `<td>${obj[key]['new']}</td>`
+        });
 
-        for (let i=0; i<2; i++) {
+        // for (let i=0; i<2; i++) {
             
-        }
+        // }
 
-        header += "</tr>" //+= neww += old += "</tr>";
-        text += `<table>${header}</table></body></html>`;
+        // keys.forEach(key => {
+        //     old += `<td>${obj[key]['old']}</td>`;
+        //     neww += `<td>${obj[key]['new']}</td>`;
+        // });
+
+        header += neww += old += "</tr>";
+        text += `<table>${header+old+neww}</table></body></html>`;
 
         res.writeHead(200, {'Content-Type': 'text/html'}); // Response header
         res.end(text); // Response
